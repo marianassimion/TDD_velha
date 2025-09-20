@@ -37,11 +37,19 @@ TEST_CASE("Vitoria jogador O", "[velha]") {
     REQUIRE(VerificaVelha(teste4) == 2);
 }
 
-TEST_CASE("Jogo indefinido", "[velha]") {
+TEST_CASE("Jogo indefinido 1", "[velha]") {
     int teste5[3][3] = {
         { 0, 1, 0 },
         { 0, 0, 0 },
         { 0, 0, 0 }
     };
     REQUIRE(VerificaVelha(teste5) == -1);
+}
+TEST_CASE("Jogo indefinido 2", "[velha]") {
+    int teste6[3][3] = {
+        { 0, 2, 0 },
+        { 0, 0, 0 },
+        { 0, 0, 0 }
+    };
+    REQUIRE(VerificaVelha(teste6) == -1);
 }
