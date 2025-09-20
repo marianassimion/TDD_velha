@@ -41,22 +41,34 @@
     if (tabuleiro[0][0] != 0 &&
         tabuleiro[0][0] == tabuleiro[1][1] &&
         tabuleiro[1][1] == tabuleiro[2][2]) {
-        if (tabuleiro[0][0] == 1) vencedorX = 1;
-        if (tabuleiro[0][0] == 2) vencedorO = 1;
+        if (tabuleiro[0][0] == 1) 
+            vencedorX = 1;
+
+        if (tabuleiro[0][0] == 2) 
+            vencedorO = 1;
     }
     if (tabuleiro[0][2] != 0 &&
         tabuleiro[0][2] == tabuleiro[1][1] &&
         tabuleiro[1][1] == tabuleiro[2][0]) {
-        if (tabuleiro[0][2] == 1) vencedorX = 1;
-        if (tabuleiro[0][2] == 2) vencedorO = 1;
+        if (tabuleiro[0][2] == 1) 
+            vencedorX = 1;
+
+        if (tabuleiro[0][2] == 2) 
+            vencedorO = 1;
     }
 
     if (vencedorX && vencedorO) return -2;
-    if (countO > 1) return -2;
-    if (countX > 1) return -2;
+    if (countO > 1) 
+        return -2;
 
-    if (vencedorX) return 1;
-    if (vencedorO) return 2;
+    if (countX > 1) 
+        return -2;
+
+    if (vencedorX) 
+        return 1;
+
+    if (vencedorO) 
+        return 2;
 
     // Verifica empate ou jogo em andamento
     bool temVazio = false;
@@ -66,6 +78,6 @@
         }
     }
 
-    if (temVazio) return 0;   // jogo em andamento
+    if (temVazio) return -1;   // jogo indefinido
     return -1;                // empate
 }
