@@ -1,7 +1,7 @@
 #include "catch_amalgamated.hpp"
 #include "velha.hpp"
 
-TEST_CASE("Jogo impossivel", "[velha]") {
+TEST_CASE("Jogo impossivel 1", "[velha]") {
     int teste1[3][3] = {
         { 1, 1, 1 },
         { 1, 1, 1 },
@@ -10,6 +10,14 @@ TEST_CASE("Jogo impossivel", "[velha]") {
     REQUIRE(VerificaVelha(teste1) == -2);
 }
 
+TEST_CASE("Jogo impossivel 2", "[velha]") {
+    int teste1[3][3] = {
+        { 2, 2, 2 },
+        { 2, 2, 2 },
+        { 2, 2, 2 }
+    };
+    REQUIRE(VerificaVelha(teste1) == -2);
+}
 
 TEST_CASE("Vitoria jogador X", "[velha]") {
     int teste2[3][3] = {
