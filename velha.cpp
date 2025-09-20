@@ -1,63 +1,71 @@
-#include "velha.hpp"
-
-// 0  -> empate
-// 1  -> vitória jogador 1
-// 2  -> vitória jogador 2
-// -1 -> jogo em andamento
-// -2 -> jogada inválida
-int VerificaVelha(int tabuleiro[3][3]) {
-    // 0. Validar jogadas
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            if (tabuleiro[i][j] != 0 && tabuleiro[i][j] != 1 && tabuleiro[i][j] != 2) {
-                return -2; // jogada inválida
-            }
-        }
-    }
-
-    // 1. Checar linhas
+ï»¿int VerificaVelha(int tabuleiro[3][3]) {
+    int vencedorX = 0;
+    int vencedorO = 0;
+	int countX = 0;
+	int countO = 0;
+    // Verifica linhas
     for (int i = 0; i < 3; i++) {
         if (tabuleiro[i][0] != 0 &&
             tabuleiro[i][0] == tabuleiro[i][1] &&
             tabuleiro[i][1] == tabuleiro[i][2]) {
-            return tabuleiro[i][0];
+            if (tabuleiro[i][0] == 1) {
+                vencedorX = 1;
+                countX++;
+            }
+            if (tabuleiro[i][0] == 2) {
+                vencedorO = 1;
+				countO++;
+            }
         }
     }
 
-    // 2. Checar colunas
+    // Verifica colunas
     for (int j = 0; j < 3; j++) {
         if (tabuleiro[0][j] != 0 &&
             tabuleiro[0][j] == tabuleiro[1][j] &&
             tabuleiro[1][j] == tabuleiro[2][j]) {
-            return tabuleiro[0][j];
+            if (tabuleiro[0][j] == 1) {
+                vencedorX = 1;
+                countX++;
+
+            }
+            if (tabuleiro[0][j] == 2) {
+                vencedorO = 1;
+                countO++;
+
+            }
         }
     }
 
-    // 3. Checar diagonais
+    // Verifica diagonais
     if (tabuleiro[0][0] != 0 &&
         tabuleiro[0][0] == tabuleiro[1][1] &&
         tabuleiro[1][1] == tabuleiro[2][2]) {
-        return tabuleiro[0][0];
+        if (tabuleiro[0][0] == 1) vencedorX = 1;
+        if (tabuleiro[0][0] == 2) vencedorO = 1;
     }
     if (tabuleiro[0][2] != 0 &&
         tabuleiro[0][2] == tabuleiro[1][1] &&
         tabuleiro[1][1] == tabuleiro[2][0]) {
-        return tabuleiro[0][2];
+        if (tabuleiro[0][2] == 1) vencedorX = 1;
+        if (tabuleiro[0][2] == 2) vencedorO = 1;
     }
 
-    // 4. Checar empate (nenhum espaço vazio)
-    bool temEspacoVazio = false;
+    if (vencedorX && vencedorO) return -2;
+    if (countO > 1) return -2;
+    if (countX > 1) return -2;
+
+    if (vencedorX) return 1;
+    if (vencedorO) return 2;
+
+    // Verifica empate ou jogo em andamento
+    bool temVazio = false;
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            if (tabuleiro[i][j] == 0) {
-                temEspacoVazio = true;
-            }
+            if (tabuleiro[i][j] == 0) temVazio = true;
         }
     }
-    if (!temEspacoVazio) {
-        return 0; // empate
-    }
 
-    // 5. Jogo ainda em andamento
-    return -1;
+    if (temVazio) return 0;   // jogo em andamento
+    return -1;                // empate
 }
