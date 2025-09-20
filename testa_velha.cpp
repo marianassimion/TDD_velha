@@ -80,3 +80,12 @@ TEST_CASE("9. Jogo empatado", "[velha]") {
     };
     REQUIRE(VerificaVelha(teste) == 0);
 }
+
+TEST_CASE("10. Vitoria jogador X em coluna", "[velha]") {
+    int teste[3][3] = {
+        { 1, 0, 2 },
+        { 1, 2, 0 },
+        { 1, 0, 0 }
+    };
+    REQUIRE(VerificaVelha(teste) == 1);
+}
