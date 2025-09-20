@@ -38,18 +38,14 @@
     }
 
     // Verifica diagonais
-    if (tabuleiro[0][0] != 0 &&
-        tabuleiro[0][0] == tabuleiro[1][1] &&
-        tabuleiro[1][1] == tabuleiro[2][2]) {
+    if (tabuleiro[0][0] != 0 && tabuleiro[0][0] == tabuleiro[1][1] && tabuleiro[1][1] == tabuleiro[2][2]) {
         if (tabuleiro[0][0] == 1) 
             vencedorX = 1;
 
         if (tabuleiro[0][0] == 2) 
             vencedorO = 1;
     }
-    if (tabuleiro[0][2] != 0 &&
-        tabuleiro[0][2] == tabuleiro[1][1] &&
-        tabuleiro[1][1] == tabuleiro[2][0]) {
+    if (tabuleiro[0][2] != 0 && tabuleiro[0][2] == tabuleiro[1][1] && tabuleiro[1][1] == tabuleiro[2][0]) {
         if (tabuleiro[0][2] == 1) 
             vencedorX = 1;
 
@@ -57,7 +53,7 @@
             vencedorO = 1;
     }
 
-    if (vencedorX && vencedorO) return -2;
+    if (vencedorX && vencedorO) return 0;
     if (countO > 1) 
         return -2;
 
@@ -78,6 +74,9 @@
         }
     }
 
-    if (temVazio) return -1;   // jogo indefinido
-    return -1;                // empate
+    if (temVazio) { 
+        return -1; 
+    
+    }   
+    return 0;                // empate
 }

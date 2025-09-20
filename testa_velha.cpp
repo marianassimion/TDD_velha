@@ -1,55 +1,82 @@
 #include "catch_amalgamated.hpp"
 #include "velha.hpp"
 
-TEST_CASE("Jogo impossivel 1", "[velha]") {
-    int teste1[3][3] = {
+TEST_CASE("1. Jogo impossivel", "[velha]") {
+    int teste[3][3] = {
         { 1, 1, 1 },
         { 1, 1, 1 },
         { 1, 1, 1 }
     };
-    REQUIRE(VerificaVelha(teste1) == -2);
+    REQUIRE(VerificaVelha(teste) == -2);
 }
 
-TEST_CASE("Jogo impossivel 2", "[velha]") {
-    int teste2[3][3] = {
+TEST_CASE("2. Jogo impossivel", "[velha]") {
+    int teste[3][3] = {
         { 2, 2, 2 },
         { 2, 2, 2 },
         { 2, 2, 2 }
     };
-    REQUIRE(VerificaVelha(teste2) == -2);
+    REQUIRE(VerificaVelha(teste) == -2);
 }
 
-TEST_CASE("Vitoria jogador X", "[velha]") {
-    int teste3[3][3] = {
+TEST_CASE("3. Vitoria jogador X", "[velha]") {
+    int teste[3][3] = {
         { 1, 1, 1 },
         { 0, 2, 2 },
         { 2, 0, 1 }
     };
-    REQUIRE(VerificaVelha(teste3) == 1);
+    REQUIRE(VerificaVelha(teste) == 1);
 }
 
-TEST_CASE("Vitoria jogador O", "[velha]") {
-    int teste4[3][3] = {
+TEST_CASE("4. Vitoria jogador X", "[velha]") {
+    int teste[3][3] = {
+        { 2, 1, 1 },
+        { 0, 2, 2 },
+        { 1, 1, 1 }
+    };
+    REQUIRE(VerificaVelha(teste) == 1);
+}
+TEST_CASE("5. Vitoria jogador O", "[velha]") {
+    int teste[3][3] = {
         { 2, 1, 1 },
         { 0, 2, 2 },
         { 1, 0, 2 }
     };
-    REQUIRE(VerificaVelha(teste4) == 2);
+    REQUIRE(VerificaVelha(teste) == 2);
 }
 
-TEST_CASE("Jogo indefinido 1", "[velha]") {
-    int teste5[3][3] = {
+TEST_CASE("6. Vitoria jogador O", "[velha]") {
+    int teste[3][3] = {
+        { 2, 2, 1 },
+        { 0, 2, 2 },
+        { 1, 0, 2 }
+    };
+    REQUIRE(VerificaVelha(teste) == 2);
+}
+
+TEST_CASE("7. Jogo indefinido", "[velha]") {
+    int teste[3][3] = {
         { 0, 1, 0 },
         { 0, 0, 0 },
         { 0, 0, 0 }
     };
-    REQUIRE(VerificaVelha(teste5) == -1);
+    REQUIRE(VerificaVelha(teste) == -1);
 }
-TEST_CASE("Jogo indefinido 2", "[velha]") {
-    int teste6[3][3] = {
+
+TEST_CASE("8. Jogo indefinido", "[velha]") {
+    int teste[3][3] = {
         { 0, 2, 0 },
         { 0, 0, 0 },
         { 0, 0, 0 }
     };
-    REQUIRE(VerificaVelha(teste6) == -1);
+    REQUIRE(VerificaVelha(teste) == -1);
+}
+
+TEST_CASE("9. Jogo empatado", "[velha]") {
+    int teste[3][3] = {
+        { 2, 2, 2 },
+        { 0, 0, 0 },
+        { 1, 1, 1 }
+    };
+    REQUIRE(VerificaVelha(teste) == 0);
 }
