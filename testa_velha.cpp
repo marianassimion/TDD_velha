@@ -116,3 +116,12 @@ TEST_CASE("13. Vitoria jogador O na diagonal", "[velha]") {
     };
     REQUIRE(VerificaVelha(teste) == 2);
 }
+
+TEST_CASE("14. Jogo empatado sem vencedores", "[velha]") {
+    int teste[3][3] = {
+        { 1, 2, 1 },
+        { 2, 1, 2 },
+        { 2, 1, 2 }
+    };
+    REQUIRE(VerificaVelha(teste) == 0);
+}
