@@ -125,3 +125,13 @@ TEST_CASE("14. Jogo empatado sem vencedores", "[velha]") {
     };
     REQUIRE(VerificaVelha(teste) == 0);
 }
+
+
+TEST_CASE("15. Jogo indefinido", "[velha]") {
+    int teste[3][3] = {
+        { 1, 2, 0 },
+        { 2, 1, 0 },
+        { 0, 0, 0 }
+    };
+    REQUIRE(VerificaVelha(teste) == -1);
+}
