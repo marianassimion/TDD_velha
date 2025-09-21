@@ -135,3 +135,4 @@ TEST_CASE("15. Jogo indefinido", "[velha]") {
     };
     REQUIRE(VerificaVelha(teste) == -1);
 }
+
