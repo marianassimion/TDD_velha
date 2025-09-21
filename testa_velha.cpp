@@ -99,11 +99,20 @@ TEST_CASE("11. Vitoria jogador O em coluna", "[velha]") {
     REQUIRE(VerificaVelha(teste) == 2);
 }
 
-TEST_CASE("12. Vitoria jogador X na diagonal principal", "[velha]") {
+TEST_CASE("12. Vitoria jogador X na diagonal ", "[velha]") {
     int teste[3][3] = {
         { 1, 2, 0 },
         { 0, 1, 2 },
         { 0, 0, 1 }
     };
     REQUIRE(VerificaVelha(teste) == 1);
+}
+
+TEST_CASE("13. Vitoria jogador O na diagonal", "[velha]") {
+    int teste[3][3] = {
+        { 1, 0, 2 },
+        { 0, 2, 1 },
+        { 2, 0, 0 }
+    };
+    REQUIRE(VerificaVelha(teste) == 2);
 }
